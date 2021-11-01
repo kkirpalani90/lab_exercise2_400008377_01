@@ -9,27 +9,64 @@
       document.addEventListener("DOMContentLoaded", function () {
         const chart = Highcharts.chart("container", {
           chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
             type: "pie",
           },
           title: {
-            text: "Fruit Consumption",
+            text: "Desktop & Mobile Browser Market Share in Barbados - October 2020",
           },
-          xAxis: {
-            categories: ["Apples", "Bananas", "Oranges"],
+          tooltip: {
+            pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
           },
-          yAxis: {
-            title: {
-              text: "Fruit eaten",
+          accessibility: {
+            point: {
+              valueSuffix: "%",
+            },
+          },
+          plotOptions: {
+            pie: {
+              allowPointSelect: true,
+              cursor: "pointer",
+              dataLabels: {
+                enabled: true,
+                format: "<b>{point.name}</b>: {point.percentage:.1f} %",
+              },
             },
           },
           series: [
             {
-              name: "Jane",
-              data: [1, 0, 4],
-            },
-            {
-              name: "John",
-              data: [5, 7, 3],
+              name: "Browser",
+              colorByPoint: true,
+              data: [
+                {
+                  name: "Chrome",
+                  y: 65.59,
+                  sliced: true,
+                  selected: true,
+                },
+                {
+                  name: "Samsung Internet",
+                  y: 5.9,
+                },
+                {
+                  name: "Firefox",
+                  y: 3.29,
+                },
+                {
+                  name: "Edge",
+                  y: 7.86,
+                },
+                {
+                  name: "Safari",
+                  y: 14.5,
+                },
+                {
+                  name: "Opera",
+                  y: 1.15,
+                },
+              ],
             },
           ],
         });
