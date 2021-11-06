@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>My Api</title>
+  </head>
+  <body>
+    <div id="container" style="width: 100%; height: 400px"></div>
+    <script>
+      const pokemonUrl = "https://api.pokemontcg.io/v2/cards/1";
+      fetch(pokemonUrl, {
+        method: "GET",
+        withCredentials: true,
+        headers: {
+          "X-Api-Key": "165dccad-efa4-4ea1-ae38-2d6adf002058",
+        },
+      }).then((data) => {
+        data.json();
+        if (data.ok) {
+          console.log("Success");
+          pokemon.card.find("base1-4").then((card) => {
+            console.log(card.name); // "Charizard"
+          });
+        } else {
+          console.log("Fail");
+        }
+      });
+    </script>
+  </body>
+</html>
